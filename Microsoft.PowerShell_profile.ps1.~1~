@@ -1,0 +1,60 @@
+# start energy -windowstyle hidden
+# figlet "What a life" | echo
+# oh-my-posh
+# $theme = Get-ChildItem $env:UserProfile\\AppData\\Local\\Programs\\oh-my-posh\\themes\\ | Get-Random
+# echo "with theme $theme"
+# oh-my-posh --init --shell pwsh --config $theme.FullName | Invoke-Expression
+
+# oh-my-posh init pwsh --config $env:POSH_THEMES_PATH\powerlevel10k_rainbow.omp.json | Invoke-Expression
+oh-my-posh init pwsh --config $env:POSH_THEMES_PATH\wopian.omp.json | Invoke-Expression
+# oh-my-posh init pwsh --config $env:POSH_THEMES_PATH\lambdageneration.omp.json | Invoke-Expression
+# oh-my-posh init pwsh --config $env:POSH_THEMES_PATH\capr4n.omp.json | Invoke-Expression
+# oh-my-posh init pwsh --config $env:POSH_THEMES_PATH\kali.omp.json | Invoke-Expression
+# oh-my-posh init pwsh 
+# starship
+# Invoke-Expression (&starship init powershell)
+
+Import-Module Terminal-Icons
+
+Import-Module PSReadLine
+#-------------------------------  Set Hot-keys BEGIN  -------------------------------
+Set-PSReadLineOption -PredictionSource History
+
+Set-PSReadLineOption -HistorySearchCursorMovesToEnd
+
+Set-PSReadLineKeyHandler -Key "Tab" -Function MenuComplete
+
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+#-------------------------------  Set Hot-keys END    -------------------------------
+
+
+#-------------------------------  Set Alias BEGIN   -------------------------------
+Set-Alias s fastfetch
+Set-Alias cc clear
+
+function reboot {shutdown /r /t 5}
+
+# function ee {explorer .}
+Set-Alias ee explorer 
+function gh {git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all}
+
+#function gvm {start gvim -windowstyle hidden}
+function nvm {start nvim}
+
+# function vi. {start vim $PROFILE}
+function c. {start nvim $PROFILE}
+
+function en {start energy -windowstyle hidden}
+
+
+function starwar {telnet towel.blinkenlights.nl}
+
+#-------------------------------  Set Alias END   -------------------------------
+
+Set-Alias l ls
+Set-Alias lg lazygit 
+
+
+# $PSDefaultParameterValues['*GitHub*:Token'] = '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' | ConvertTo-SecureString
